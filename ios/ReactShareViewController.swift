@@ -8,6 +8,7 @@
 //
 
 import RNShareMenu
+import Firebase
 
 class ReactShareViewController: ShareViewController, RCTBridgeDelegate, ReactShareViewDelegate {
   func sourceURL(for bridge: RCTBridge!) -> URL! {
@@ -21,7 +22,7 @@ class ReactShareViewController: ShareViewController, RCTBridgeDelegate, ReactSha
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    FirebaseApp.configure()
     let bridge: RCTBridge! = RCTBridge(delegate: self, launchOptions: nil)
     let rootView = RCTRootView(
       bridge: bridge,
