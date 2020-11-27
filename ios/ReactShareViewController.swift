@@ -23,6 +23,11 @@ class ReactShareViewController: ShareViewController, RCTBridgeDelegate, ReactSha
   override func viewDidLoad() {
     super.viewDidLoad()
     FirebaseApp.configure()
+    do {
+      try Auth.auth().useUserAccessGroup("group.com.wesoftyou.wevoyce")
+    } catch let error as NSError {
+      print("Error changing user access group: %@", error)
+    }
     let bridge: RCTBridge! = RCTBridge(delegate: self, launchOptions: nil)
     let rootView = RCTRootView(
       bridge: bridge,
